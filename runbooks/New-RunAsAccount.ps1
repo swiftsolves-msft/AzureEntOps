@@ -1,21 +1,21 @@
 #Requires -RunAsAdministrator
 Param (
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $false)]
     [String] $ResourceGroup,
 
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $false)]
     [String] $AutomationAccountName,
 
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $false)]
     [String] $ApplicationDisplayName,
 
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $false)]
     [String] $SubscriptionId,
 
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $false)]
     [Boolean] $CreateClassicRunAsAccount,
 
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $false)]
     [String] $SelfSignedCertPlainPassword,
 
     [Parameter(Mandatory = $false)]
