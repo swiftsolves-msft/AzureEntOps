@@ -1,4 +1,4 @@
-﻿# Input bindings are passed in via param block.
+# Input bindings are passed in via param block.
 param($Timer)
 
 # Get the current universal time in the default string format
@@ -11,6 +11,9 @@ if ($Timer.IsPastDue) {
 
 # Write an information log with the current time.
 Write-Host "PowerShell timer trigger function ran! TIME: $currentUTCtime"
+
+#Authenticate using MSI
+Connect-AzAccount -Identity
 
 # Get the current month and year
 $currentMonth = (Get-Date).Month
@@ -34,10 +37,10 @@ switch -Regex ($currentMonth) {
 
 }
 
-$dashname = "Finacial Ops - " + $dashMonth 
+$dashname = "FinacialOps-" + $dashMonth 
 
 # Create a Run Deployment unique name
 $date = Get-Date -Format "yyyyMMddhhmmss"
 
 #deploy Dashboard template passing in parameters
-New-AzResourceGroupDeployment -Name $date -ResourceGroupName "dashboards" -Mode Incremental -TemplateUri "URI of ARM Template Here" -monthStart $startDate -monthEnd $endDate -dashboardName $dashName
+New-AzResourceGroupDeployment -Name $date -ResourceGroupName "dashboards" -Mode Incremental -TemplateUri "<ARM TEMPLATE URI>" -monthStart $startDate -monthEnd $endDate -dashboardName $dashName
